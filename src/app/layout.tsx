@@ -13,6 +13,8 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://bek-sam.dev"),
+  alternates: { canonical: "/" },
   title: `${profile.name}: Software Engineer`,
   description: `${profile.name} is a software engineer in ${profile.location} who builds AI agent guardrails, full-stack systems and native apps. ${profile.status}.`,
   openGraph: {
