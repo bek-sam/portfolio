@@ -418,7 +418,7 @@ export const certifications: Credential[] = [
 
 export const honors: { title: string; detail: string; year: string }[] = [
   { title: "ICPC South Central Regional", detail: "2nd place at the University of Houston site, Honorable Mention overall (team captain)", year: "2025" },
-  { title: "Kyrgyzstan Math Olympiad", detail: "Gold medal, twice", year: "2020–21" },
+  { title: "National Math Olympiad", detail: "Gold medal, twice", year: "2020–21" },
   { title: "QuackHacks 2025", detail: "1st place in the Polymarket track, won by a KurultAi club team", year: "2025" },
   { title: "Rice Hackathon", detail: "IntentLock, Persona challenge (solo)", year: "2026" },
   { title: "Rice Datathon", detail: "NeuroTech: Mind Over Matter (team of 4)", year: "2026" },
