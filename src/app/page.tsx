@@ -11,12 +11,22 @@ import {
   Spotlight,
   ThemeToggle,
 } from "@/components/interactive";
-import { education, experience, heroStats, honors, profile, projects, skills, type Project } from "@/data/content";
+import {
+  certifications,
+  education,
+  experience,
+  heroStats,
+  honors,
+  profile,
+  projects,
+  skills,
+  type Project,
+} from "@/data/content";
 
 const sections = [
-  { id: "work", label: "Work" },
   { id: "experience", label: "Experience" },
-  { id: "toolkit", label: "Toolkit" },
+  { id: "projects", label: "Projects" },
+  { id: "credentials", label: "Credentials" },
   { id: "about", label: "About" },
   { id: "contact", label: "Contact" },
 ];
@@ -55,7 +65,7 @@ export default function Home() {
       <div aria-hidden className="backdrop-grid pointer-events-none fixed inset-0 -z-10" />
 
       <a
-        href="#work"
+        href="#experience"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-accent focus:px-3 focus:py-2 focus:text-accent-ink"
       >
         Skip to content
@@ -170,33 +180,8 @@ export default function Home() {
             </dl>
           </Reveal>
 
-          {/* ---------- Work ---------- */}
-          <Section id="work" index="01" title="Selected work">
-            <div className="dim-group space-y-5">
-              {featured.map((p) => (
-                <ProjectCard key={p.slug} p={p} />
-              ))}
-            </div>
-            {more.length > 0 && (
-              <div className="mt-5 dim-group grid gap-5">
-                {more.map((p) => (
-                  <CompactProject key={p.slug} p={p} />
-                ))}
-              </div>
-            )}
-            <a
-              href={profile.github}
-              target="_blank"
-              rel="noreferrer"
-              className="group mt-8 inline-flex items-center gap-2 text-sm font-medium"
-            >
-              More on GitHub
-              <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
-            </a>
-          </Section>
-
           {/* ---------- Experience ---------- */}
-          <Section id="experience" index="02" title="Experience">
+          <Section id="experience" index="01" title="Experience">
             <ol className="dim-group relative space-y-4">
               {experience.map((e) => (
                 <li
@@ -209,6 +194,9 @@ export default function Home() {
                       <span className="mt-2 flex items-center gap-1.5 normal-case tracking-normal text-accent">
                         <span className="size-1.5 rounded-full bg-accent" /> current
                       </span>
+                    )}
+                    {e.kind === "leadership" && (
+                      <span className="mt-2 block normal-case tracking-normal text-violet">leadership</span>
                     )}
                   </div>
                   <div>
@@ -230,14 +218,116 @@ export default function Home() {
                 </li>
               ))}
             </ol>
+            {resume && (
+              <a href={resume} target="_blank" rel="noreferrer" className="group mt-6 inline-flex items-center gap-2 text-sm font-medium">
+                View full résumé
+                <span aria-hidden className="transition-transform group-hover:translate-x-1">↗</span>
+              </a>
+            )}
           </Section>
 
-          {/* ---------- Toolkit ---------- */}
-          <Section id="toolkit" index="03" title="Toolkit">
+          {/* ---------- Projects ---------- */}
+          <Section id="projects" index="02" title="Projects">
+            <div className="dim-group space-y-5">
+              {featured.map((p) => (
+                <ProjectCard key={p.slug} p={p} />
+              ))}
+            </div>
+            <h3 className="mb-4 mt-12 font-mono text-[11px] uppercase tracking-[0.18em] text-faint">
+              More projects · {more.length}
+            </h3>
+            <div className="dim-group grid gap-4 sm:grid-cols-2">
+              {more.map((p) => (
+                <CompactProject key={p.slug} p={p} />
+              ))}
+            </div>
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noreferrer"
+              className="group mt-8 inline-flex items-center gap-2 text-sm font-medium"
+            >
+              Everything on GitHub
+              <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
+            </a>
+          </Section>
+
+          {/* ---------- Credentials ---------- */}
+          <Section id="credentials" index="03" title="Awards & certifications">
+            <h3 className="mb-4 font-mono text-[11px] uppercase tracking-[0.18em] text-faint">Awards & competitions</h3>
+            <ul className="divide-y divide-line border-y border-line">
+              {honors.map((h) => (
+                <li key={h.title} className="flex items-baseline justify-between gap-4 py-3">
+                  <span className="text-sm">
+                    <span className="font-medium">{h.title}</span>
+                    <span className="text-muted">: {h.detail}</span>
+                  </span>
+                  <span className="shrink-0 font-mono text-xs tabular-nums text-faint">{h.year}</span>
+                </li>
+              ))}
+            </ul>
+
+            <h3 className="mb-4 mt-12 font-mono text-[11px] uppercase tracking-[0.18em] text-faint">
+              Certifications · {certifications.length}
+            </h3>
+            <ul className="grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2">
+              {certifications.map((c) => (
+                <li key={c.title} className="bg-bg px-4 py-3">
+                  <p className="text-sm font-medium leading-snug">{c.title}</p>
+                  <p className="mt-0.5 flex justify-between gap-2 text-xs text-faint">
+                    <span>{c.issuer}</span>
+                    <span className="font-mono tabular-nums">{c.year}</span>
+                  </p>
+                </li>
+              ))}
+            </ul>
+            <a
+              href={`${profile.linkedin}/details/certifications/`}
+              target="_blank"
+              rel="noreferrer"
+              className="group mt-6 inline-flex items-center gap-2 text-sm font-medium"
+            >
+              Credentials on LinkedIn
+              <span aria-hidden className="transition-transform group-hover:translate-x-1">↗</span>
+            </a>
+          </Section>
+
+          {/* ---------- About ---------- */}
+          <Section id="about" index="04" title="About">
+            <div className="space-y-4 leading-relaxed text-muted">
+              {profile.about.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+            </div>
+            <a
+              href={profile.linkedinPosts}
+              target="_blank"
+              rel="noreferrer"
+              className="group mt-4 inline-flex items-center gap-2 text-sm font-medium"
+            >
+              Read my posts on building with AI agents
+              <span aria-hidden className="transition-transform group-hover:translate-x-1">↗</span>
+            </a>
+
+            <div className="mt-8 space-y-3">
+              {education.map((ed) => (
+                <div key={ed.school} className="rounded-xl border border-line bg-card p-5">
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <p className="font-semibold">{ed.school}</p>
+                    <p className="font-mono text-xs text-faint">{ed.period}</p>
+                  </div>
+                  <p className="mt-1 text-sm text-muted">
+                    {ed.degree} · {ed.detail}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <h3 className="mb-4 mt-12 font-mono text-[11px] uppercase tracking-[0.18em] text-faint">Toolkit</h3>
             <div className="grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2">
               {skills.map((s) => (
                 <div key={s.group} className="bg-bg p-5">
-                  <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-faint">{s.group}</h3>
+                  <h4 className="font-mono text-[11px] uppercase tracking-[0.18em] text-faint">{s.group}</h4>
                   <p className="mt-3 text-sm leading-7 text-fg">
                     {s.items.map((it, i) => (
                       <span key={it}>
@@ -248,38 +338,6 @@ export default function Home() {
                   </p>
                 </div>
               ))}
-            </div>
-
-            <h3 className="mb-4 mt-12 font-mono text-[11px] uppercase tracking-[0.18em] text-faint">Honors &amp; leadership</h3>
-            <ul className="divide-y divide-line border-y border-line">
-              {honors.map((h) => (
-                <li key={h.title} className="flex items-baseline justify-between gap-4 py-3">
-                  <span className="text-sm">
-                    <span className="font-medium">{h.title}</span>
-                    <span className="text-muted">, {h.detail}</span>
-                  </span>
-                  <span className="shrink-0 font-mono text-xs tabular-nums text-faint">{h.year}</span>
-                </li>
-              ))}
-            </ul>
-          </Section>
-
-          {/* ---------- About ---------- */}
-          <Section id="about" index="04" title="About">
-            <div className="space-y-4 leading-relaxed text-muted">
-              {profile.about.map((p) => (
-                <p key={p}>{p}</p>
-              ))}
-            </div>
-            <div className="mt-8 rounded-xl border border-line bg-card p-5">
-              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-faint">Education</p>
-              <div className="mt-3 flex flex-wrap items-baseline justify-between gap-2">
-                <p className="font-semibold">{education.school}</p>
-                <p className="font-mono text-xs text-faint">{education.period}</p>
-              </div>
-              <p className="mt-1 text-sm text-muted">
-                {education.degree} · GPA {education.gpa}
-              </p>
             </div>
           </Section>
 
@@ -398,6 +456,29 @@ function Rich({ text }: { text: string }) {
   );
 }
 
+function ProjectLinks({ p }: { p: Project }) {
+  if (p.links.length === 0) return null;
+  return (
+    <ul className="mt-4 flex flex-wrap gap-2" aria-label={`${p.name} links`}>
+      {p.links.map((l) => (
+        <li key={l.href}>
+          <a
+            href={l.href}
+            target="_blank"
+            rel="noreferrer"
+            className="group/l inline-flex h-7 items-center gap-1.5 rounded-md border border-line-strong px-2.5 text-xs font-medium transition-colors hover:bg-card-hover"
+          >
+            {l.label}
+            <span aria-hidden className="text-faint transition-transform group-hover/l:-translate-y-px group-hover/l:translate-x-px group-hover/l:text-fg">
+              ↗
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 function ProjectCard({ p }: { p: Project }) {
   return (
     <article className="dim-item group relative overflow-hidden rounded-2xl border border-line bg-card p-6 hover:border-line-strong hover:bg-card-hover sm:p-7">
@@ -407,80 +488,78 @@ function ProjectCard({ p }: { p: Project }) {
         <p className="font-mono text-[11px] text-faint">{p.period}</p>
       </div>
 
-      <h3 className="mt-3 text-2xl font-semibold tracking-tight">
-        {p.links[0] ? (
-          <a href={p.links[0].href} target="_blank" rel="noreferrer" className="inline-flex items-baseline gap-2">
-            {p.name}
-            <span aria-hidden className="text-base text-faint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg">
-              ↗
-            </span>
-          </a>
-        ) : (
-          p.name
-        )}
-      </h3>
+      <h3 className="mt-3 text-2xl font-semibold tracking-tight">{p.name}</h3>
       <p className="mt-2 leading-relaxed text-muted">{p.oneLiner}</p>
 
-      <dl className="mt-5 grid grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-4">
-        {p.metrics.map((m) => (
-          <div key={m.label} className="border-l border-line pl-3">
-            <dt className="sr-only">{m.label}</dt>
-            <dd className={`text-xl font-semibold tabular-nums tracking-tight ${accentText[p.accent]}`}>{m.value}</dd>
-            <dd className="text-[11px] leading-tight text-faint">{m.label}</dd>
-          </div>
-        ))}
-      </dl>
+      {p.metrics && (
+        <dl className="mt-5 grid grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-4">
+          {p.metrics.map((m) => (
+            <div key={m.label} className="border-l border-line pl-3">
+              <dt className="sr-only">{m.label}</dt>
+              <dd className={`text-xl font-semibold tabular-nums tracking-tight ${accentText[p.accent]}`}>{m.value}</dd>
+              <dd className="text-[11px] leading-tight text-faint">{m.label}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
 
-      <details className="group/d mt-5 border-t border-line pt-4">
-        <summary className="flex cursor-pointer list-none items-center gap-2 text-sm font-medium text-fg [&::-webkit-details-marker]:hidden">
-          <span className="grid size-5 place-items-center rounded border border-line font-mono text-xs transition-transform group-open/d:rotate-45">
-            +
-          </span>
-          Case study: problem, build, and caveats
-        </summary>
-        <div className="mt-4 space-y-4 text-sm leading-relaxed">
-          <div>
-            <p className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-faint">Problem</p>
-            <p className="mt-1 text-muted">{p.problem}</p>
+      {p.built && (
+        <details className="group/d mt-5 border-t border-line pt-4">
+          <summary className="flex cursor-pointer list-none items-center gap-2 text-sm font-medium text-fg [&::-webkit-details-marker]:hidden">
+            <span className="grid size-5 place-items-center rounded border border-line font-mono text-xs transition-transform group-open/d:rotate-45">
+              +
+            </span>
+            Case study: problem, build, and caveats
+          </summary>
+          <div className="mt-4 space-y-4 text-sm leading-relaxed">
+            {p.problem && (
+              <div>
+                <p className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-faint">Problem</p>
+                <p className="mt-1 text-muted">{p.problem}</p>
+              </div>
+            )}
+            <div>
+              <p className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-faint">What I built</p>
+              <ul className="mt-2 space-y-2">
+                {p.built.map((b) => (
+                  <li key={b} className="flex gap-3 text-muted">
+                    <span aria-hidden className={accentText[p.accent]}>→</span>
+                    <span>
+                      <Rich text={b} />
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {p.honesty && (
+              <p className="rounded-lg border border-dashed border-line-strong px-3 py-2 text-xs text-faint">
+                <span className="font-mono uppercase tracking-wider">Honest note:</span> {p.honesty}
+              </p>
+            )}
           </div>
-          <div>
-            <p className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-faint">What I built</p>
-            <ul className="mt-2 space-y-2">
-              {p.built.map((b) => (
-                <li key={b} className="flex gap-3 text-muted">
-                  <span aria-hidden className={accentText[p.accent]}>→</span>
-                  <span>
-                    <Rich text={b} />
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          {p.honesty && (
-            <p className="rounded-lg border border-dashed border-line-strong px-3 py-2 text-xs text-faint">
-              <span className="font-mono uppercase tracking-wider">Honest note:</span> {p.honesty}
-            </p>
-          )}
-        </div>
-      </details>
+        </details>
+      )}
 
       <Pills items={p.stack} />
+      <ProjectLinks p={p} />
     </article>
   );
 }
 
 function CompactProject({ p }: { p: Project }) {
   return (
-    <article className="dim-item rounded-2xl border border-line p-5 hover:bg-card sm:flex sm:items-start sm:gap-6">
-      <div className="sm:w-40 sm:shrink-0">
-        <p className={`font-mono text-[11px] uppercase tracking-[0.16em] ${accentText[p.accent]}`}>{p.kicker}</p>
-        <h3 className="mt-1 text-lg font-semibold tracking-tight">{p.name}</h3>
+    <article className="dim-item flex flex-col rounded-2xl border border-line p-5 hover:border-line-strong hover:bg-card">
+      <div className="flex items-baseline justify-between gap-2">
+        <p className={`font-mono text-[10.5px] uppercase tracking-[0.14em] ${accentText[p.accent]}`}>{p.kicker}</p>
+        <p className="shrink-0 font-mono text-[10.5px] text-faint">{p.period}</p>
       </div>
-      <div className="mt-2 sm:mt-0">
-        <p className="text-sm leading-relaxed text-muted">
-          {p.oneLiner} {p.built.join(". ")}.
-        </p>
+      <h3 className="mt-2 text-lg font-semibold tracking-tight">{p.name}</h3>
+      <p className="mt-1 text-xs text-faint">{p.role}</p>
+      <p className="mt-2 text-sm leading-relaxed text-muted">{p.oneLiner}</p>
+      {p.honesty && <p className="mt-2 text-xs italic text-faint">{p.honesty}</p>}
+      <div className="mt-auto">
         <Pills items={p.stack} />
+        <ProjectLinks p={p} />
       </div>
     </article>
   );
