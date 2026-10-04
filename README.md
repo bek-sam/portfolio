@@ -23,3 +23,6 @@ To deploy, import the repo into Vercel, or upload `out/` to any static host (Net
 - Signature "agent run replay" of IntentLock's enforcement flow (`src/components/AgentTrace.tsx`)
 - ⌘K command palette, copy-to-clipboard email, light and dark themes
 - Expandable case studies (problem, build, honest caveats); respects `prefers-reduced-motion`
+
+## Link preview (og.png)
+`npm run og` screenshots the live site in dark mode and saves the 1200×630 card used by LinkedIn, Slack, and iMessage previews.
