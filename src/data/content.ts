@@ -68,14 +68,14 @@ export const experience: Experience[] = [
     company: "KurultAi R&D Club",
     role: "Co-founder & President",
     period: "Aug 2024 — Present",
-    location: "Houston, TX · Hybrid",
+    location: "Seattle, WA · Hybrid",
     current: true,
     kind: "leadership",
     summary: "A student R&D club I co-founded to help students build real software and land engineering roles.",
     bullets: [
       "Grew the club to 30+ members through workshops, hackathons and mentorship in coding, problem solving and software development.",
       "Secured partnerships with local tech companies and host career sessions with students who landed internships at companies like Visa, Shopify and Capital One.",
-      "A club team won 1st place in the Polymarket track at QuackHacks 2025 (Oregon). The club also produced Hukm AI, a legal chatbot.",
+      "The club also produced Hukm AI, a legal chatbot.",
     ],
     stack: ["Leadership", "Mentorship", "Hackathons", "Partnerships"],
   },
@@ -419,7 +419,6 @@ export const certifications: Credential[] = [
 export const honors: { title: string; detail: string; year: string }[] = [
   { title: "ICPC South Central Regional", detail: "2nd place at the University of Houston site, Honorable Mention overall (team captain)", year: "2025" },
   { title: "National Math Olympiad", detail: "Gold medal, twice", year: "2020–21" },
-  { title: "QuackHacks 2025", detail: "1st place in the Polymarket track, won by a KurultAi club team", year: "2025" },
   { title: "Rice Hackathon", detail: "IntentLock, Persona challenge (solo)", year: "2026" },
   { title: "Rice Datathon", detail: "NeuroTech: Mind Over Matter (team of 4)", year: "2026" },
 ];
