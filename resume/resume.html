@@ -1,0 +1,90 @@
+<!doctype html>
+<!-- Source for public/Bekbolsun_Samaganov_Resume.pdf. Regenerate with: npm run resume -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bekbolsun Samaganov – Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400&display=block" rel="stylesheet">
+<style>
+  @page { size: Letter; margin: 0.4in 0.5in; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Carlito, Calibri, sans-serif; font-size: 10pt; line-height: 1.2; color: #000; }
+  a { color: inherit; text-decoration: none; }
+  header { text-align: center; }
+  h1 { font-size: 20pt; font-weight: 700; letter-spacing: 0.2px; }
+  .contact { margin-top: 1px; }
+  .headline { font-weight: 700; margin-top: 1px; }
+  h2 { font-size: 11pt; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #000; margin: 6px 0 2px; padding-bottom: 1px; }
+  .row { display: flex; justify-content: space-between; gap: 12px; margin-top: 3px; }
+  .row .when { white-space: nowrap; }
+  ul { margin: 1px 0 0 15px; }
+  li { margin: 0.5px 0; padding-left: 1px; }
+  .skills p { margin: 0.5px 0; }
+  i { font-style: italic; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Bekbolsun Samaganov</h1>
+  <div class="contact">Houston, TX (open to relocation) | <a href="mailto:bekbol.samaganov@gmail.com">bekbol.samaganov@gmail.com</a> | <a href="https://linkedin.com/in/bek-sam">linkedin.com/in/bek-sam</a> | <a href="https://github.com/bek-sam">github.com/bek-sam</a></div>
+  <div class="headline">Software Engineer: AI agents, full-stack systems, native apps</div>
+</header>
+
+<h2>Experience</h2>
+<div class="row"><span><b>Software Engineer Intern</b> | Keystone Tile, Houston, TX</span><span class="when">Jun 2026 – Present</span></div>
+<ul>
+  <li>Sole engineer at a 5-location distributor. Built Keystone Hub, a native SwiftUI app for iPhone, iPad and Mac (~34K lines of Swift) giving staff offline search over a 4,362-product catalog.</li>
+  <li>Engineered offline-first catalog sync with atomic, SHA-256-verified SQLite generations, import quality gates and one-click rollback; built FTS5 search with weighted BM25 ranking and exact-SKU-first ordering.</li>
+  <li>Shipped on-device barcode, OCR and stone photo matching with Apple Vision under a strict confidence policy, covered by 105 XCTests and 62 in-app self-tests in GitHub Actions CI.</li>
+  <li>Built FieldOps, a field-sales platform (Django REST API, Next.js, SwiftUI, Postgres job queue, Terraform for AWS), and rebuilt the company website in Next.js 16 (1,764 products, 40 pages, 11 APIs) with Zod, rate limits and CSP.</li>
+  <li>Automated data sheets for 1,583 SKUs in Python (SSIM 0.9995 visual match) and QR labels for 826 products with 0 scan failures.</li>
+</ul>
+<div class="row"><span><b>Front-End Developer Intern</b> | Voyager Group, Bishkek, Kyrgyzstan</span><span class="when">Mar 2022 – Jan 2023</span></div>
+<ul>
+  <li>Developed responsive booking interfaces with React and Bootstrap and integrated REST APIs across search and reservation workflows; shipped in two-week Agile sprints with Git code review.</li>
+</ul>
+<div class="row"><span><b>Software Developer Intern</b> | MitApp, Bishkek, Kyrgyzstan</span><span class="when">Aug 2022 – Nov 2022</span></div>
+<ul>
+  <li>Delivered React/Redux interfaces from Figma designs, built a reusable component library and wrote unit tests.</li>
+</ul>
+
+<h2>Projects</h2>
+<div class="row"><span><b>InvAI</b> | <i>TypeScript, Node.js, PostgreSQL, BullMQ, React, Python, Claude API</i></span><span class="when">Sep 2026 – Present</span></div>
+<ul>
+  <li>Founded and led engineering of a multi-tenant SaaS for print shops by designing a 20-role Claude Code agent team with file-ownership hooks, independent review and integration gates (8 repos, ~1,800 tests).</li>
+  <li>Architected a contract-first typed API (258 procedures), Postgres RLS multi-tenancy (88 policies), a transactional outbox with crash-safe exactly-once side effects, and an AI gateway with spend breakers and a 133-case eval harness.</li>
+</ul>
+<div class="row"><span><b>IntentLock</b> (Rice Hackathon) | <i>TypeScript, Cloudflare Workers, D1, WebAuthn, Web Crypto</i></span><span class="when">Sep 2026</span></div>
+<ul>
+  <li>Built solo in 2 days a verified-human authorization gateway for AI agents: a default-deny policy engine (11 checks) kept outside the model and WebAuthn passkey approvals bound to SHA-256 digests of the exact action.</li>
+  <li>Enforced exactly-once execution with 3 database uniqueness constraints, a P-256-signed hash-chained audit log and an epoch-based kill switch; validated against 10 simulated attacks incl. replay and prompt injection.</li>
+</ul>
+<div class="row"><span><b>Wardrobe AI</b> | <i>Next.js 16, TypeScript, Supabase (PostgreSQL), OpenAI API, Playwright</i></span><span class="when">Jul 2026</span></div>
+<ul>
+  <li>Built 15 OpenAI workflows with Zod structured outputs, validating every AI outfit against items the user owns; a 5-intent router sends only 3 intents to a model, so lookups cost zero tokens.</li>
+  <li>Enforced row-level security on every table (37 policies) and TOTP MFA at the database layer; 787 automated tests (unit, integration, E2E) in GitHub Actions.</li>
+</ul>
+<div class="row"><span><b>NeuroTech</b> (Rice Datathon) | <i>Python, PyTorch</i></span><span class="when">Jan 2026</span></div>
+<ul>
+  <li>Trained an EEGNet-variant CNN on 4-class motor-imagery EEG from 86 subjects, reaching ~51.5% unseen-subject accuracy (25% chance).</li>
+</ul>
+
+<h2>Technical Skills</h2>
+<div class="skills">
+  <p><b>Languages:</b> Python, TypeScript, JavaScript, Java, C++, Swift, SQL</p>
+  <p><b>AI / Agents:</b> Claude API, OpenAI API, structured outputs, LLM evals, agent guardrails, PyTorch</p>
+  <p><b>Backend &amp; Data:</b> Node.js, Django, REST APIs, PostgreSQL, SQLite (FTS5), Redis / BullMQ, Supabase</p>
+  <p><b>Frontend &amp; Mobile:</b> React, Next.js, Tailwind CSS, SwiftUI, offline-first apps</p>
+  <p><b>Cloud &amp; DevOps:</b> AWS, Cloudflare Workers, Docker, Terraform, GitHub Actions, Linux, Git</p>
+  <p><b>Security:</b> WebAuthn / passkeys, OAuth / MFA, row-level security, CSP, cryptographic signing</p>
+</div>
+
+<h2>Education</h2>
+<div class="row"><span><b>North American University</b>, Houston, TX</span><span class="when">Expected Dec 2026</span></div>
+<div>B.S. Computer Science (Software Development) | GPA: 3.58/4.00</div>
+
+<h2>Awards &amp; Leadership</h2>
+<div><b>Honors:</b> ICPC Regional Silver Medalist (2025) | AWS Certified Developer – Associate (2024) | Kyrgyzstan Math Olympiad Gold (2020, 2021)</div>
+<div><b>Leadership:</b> Co-founder &amp; President, KurultAi R&amp;D Club (Aug 2024 – Present), 30+ members, workshops &amp; hackathons | Treasurer &amp; Mentor, ACM at NAU</div>
+</body>
+</html>
