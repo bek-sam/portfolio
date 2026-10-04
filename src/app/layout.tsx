@@ -13,15 +13,21 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bek-sam.dev"),
+  metadataBase: new URL("https://www.bek-sam.dev"),
   alternates: { canonical: "/" },
   title: `${profile.name}: Software Engineer`,
   description: `${profile.name} is a software engineer in ${profile.location} who builds AI agent guardrails, full-stack systems and native apps. ${profile.status}.`,
   openGraph: {
     title: `${profile.name}: Software Engineer`,
     description: "Software engineer who builds AI agents, full-stack systems and native apps.",
-    images: ["/bek.jpg"],
+    url: "/",
+    siteName: "Bekbolsun Samaganov",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Bekbolsun Samaganov, Software Engineer" }],
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og.png"],
   },
 };
 
