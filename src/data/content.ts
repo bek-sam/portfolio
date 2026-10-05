@@ -312,7 +312,7 @@ export const projects: Project[] = [
       "The REST backend for a learning & practice platform: 6 Prisma models, 5 endpoints, NextAuth sessions and zod validation. A topic counts as mastered after 3 correct answers in a row.",
     stack: ["Next.js 16", "Prisma", "SQLite", "NextAuth", "Zod"],
     honesty: "Backend-only prototype; no UI yet.",
-    links: [{ label: "GitHub", href: "https://github.com/bek-sam/jrt" }],
+    links: [],
     accent: "sky",
     category: "Full-stack",
   },
