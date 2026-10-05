@@ -361,7 +361,7 @@ export const projects: Project[] = [
     role: "Front-end developer",
     oneLiner: "Front-end work on a public-health information site for a USAID-funded tuberculosis program in Kyrgyzstan.",
     stack: ["HTML", "CSS", "JavaScript"],
-    links: [{ label: "Live", href: "https://curetb.tbcenter.kg/ru" }],
+    links: [],
     accent: "sky",
     category: "Web",
   },
